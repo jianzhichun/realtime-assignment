@@ -1,0 +1,29 @@
+group 'io.github.jianzhichun'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    libs = [
+            rxjava: ['io.reactivex.rxjava2:rxjava:2.2.0'],
+            util  : ['com.google.guava:guava:23.0',
+                     'org.apache.commons:commons-lang3:3.7'],
+            helper: ['org.projectlombok:lombok:1.18.2'],
+            test  : ['junit:junit:4.12']
+    ]
+}
+
+dependencies {
+    compile([
+            libs.rxjava,
+            libs.util
+    ])
+    compileOnly([libs.helper])
+    testCompile([libs.test])
+}
